@@ -1,0 +1,88 @@
+﻿@page
+@model IndexModel
+@using KWFishingHQ.Interfaces
+@* @inject IRiverDataService RiverDataService
+@{
+    var temperature = await RiverDataService.ScrapeRiverDataTemperatureAsync();
+} *@
+@{
+    ViewData["Title"] = "Home page";
+
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/IndexStyleSheet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">KW Fishing HQ </h1>
+    <p> 
+        Find out all the data to ensure your fishing trips will be successful in Waterloo!
+    </p>
+    <p>
+        Conestogo River:
+    </p>
+</div>
+
+<div id="map" style="height: 400px;"></div>
+<div>
+    <table>
+        <tr>
+            <th>
+                Current Air Temperature (°C)
+            </th>
+            <th>
+                Current Wind Direction and Speed (mph)
+            </th>
+            <th>
+                Current Barometric Pressure 
+            </th>
+            <th>
+                Current Cloud Cover Percentage
+            </th>
+            <th>
+                UV Index 
+            </th>
+            <th>
+                Sunrise Time
+            </th>
+            <th>
+                Sun Set
+            </th>
+        </tr>
+        <tr>  
+            @* dummy values for barometric pressure and UV Index, will implement change between F and C for temperature on click *@
+              <td>
+                @Model.Temperature
+              </td>
+              <td>
+                @Model.Wind
+              </td>
+              <td>
+                @Model.Pressure
+              </td>
+              <td>
+                @Model.CloudCover
+              </td>
+              <td>
+                @Model.UVindex
+              </td>
+              <td>
+                @Model.SunRise
+              </td>
+              <td>
+                @Model.SunSet
+              </td>
+        </tr>
+    </table>
+</div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+<script src="~/js/ConestogoRiverMap.js"></script> 
+
+@* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGxgPdeODaIh7XqDZYJXOOCTUB4Hnowkg&callback=initMap" async defer></script> *@
