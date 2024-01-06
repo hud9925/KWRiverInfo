@@ -49,7 +49,7 @@ namespace KWFishingHQ.Services
             }
             
         }
-        public async Task<(string Pressure, string SunRise, string SunSet, string UVindex)> ScrapeWaterlooWeatherData()
+        public async Task<(string Temperature, string Wind, string CloudCover, string Pressure, string SunRise, string SunSet, string UVindex)> ScrapeWaterlooWeatherData()
         {
             // scraping logic for additional weather data from weatherwx.com for waterloo ontario
             try {
@@ -62,6 +62,18 @@ namespace KWFishingHQ.Services
                 var page = await browser.NewPageAsync();
                 await page.SetUserAgentAsync("danielhu");
                 await page.GoToAsync("https://www.weatherwx.com/forecasts/ca/on/waterloo.html");
+
+                await page.WaitForSelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(3) > td");
+                var tempElement = await page.QuerySelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(1) > table > tbody > tr:nth-child(3) > td");
+                var temperatureText = await tempElement.EvaluateFunctionAsync<string>("el => el.textContent");
+
+                await page.WaitForSelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(2)");
+                var windElement = await page.QuerySelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(4) > td:nth-child(2)");
+                var windText = await windElement.EvaluateFunctionAsync<string>("el => el.textContent");
+
+                await page.WaitForSelectorAsync("#tab-all > div > div:nth-child(3) > article > table > tbody > tr > td.tdclasstd > div > table > tbody > tr:nth-child(1) > td:nth-child(2)");
+                var cloudElement = await page.QuerySelectorAsync("#tab-all > div > div:nth-child(3) > article > table > tbody > tr > td.tdclasstd > div > table > tbody > tr:nth-child(1) > td:nth-child(2)");
+                var cloudText = await cloudElement.EvaluateFunctionAsync<string>("el => el.textContent");
 
                 await page.WaitForSelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td:nth-child(2)");
                 var pressureElement = await page.QuerySelectorAsync("#tab-all > div > div:nth-child(2) > article > div.lan.C > table > tbody > tr > td:nth-child(2) > table > tbody > tr:nth-child(5) > td:nth-child(2)");
@@ -78,11 +90,11 @@ namespace KWFishingHQ.Services
                 await page.WaitForSelectorAsync("#tab-all > div > div:nth-child(3) > article > table > tbody > tr > td.tdclasstd > div > table > tbody > tr:nth-child(2) > td:nth-child(2)");
                 var UVElement = await page.QuerySelectorAsync("#tab-all > div > div:nth-child(3) > article > table > tbody > tr > td.tdclasstd > div > table > tbody > tr:nth-child(2) > td:nth-child(2)");
                 var UVText = await UVElement.EvaluateFunctionAsync<string>("el => el.textContent");
-                return (pressureText, SunRiseText, sunsetText, UVText);
+                return (temperatureText, windText, cloudText, pressureText, SunRiseText, sunsetText, UVText);
             }
             catch (Exception ex){
                 Console.WriteLine($"Error occurred: {ex.Message}");
-                return ("Error", "e", "Error", "e"); 
+                return ("Error", "e", "Error", "e", "e", "e", "e"); 
             }
         }
     }

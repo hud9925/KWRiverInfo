@@ -21,8 +21,8 @@ public class RiverDataModel: PageModel
         _riverDataService = riverDataService;
     }
     public async Task OnGetAync(){
-        (Temperature, Wind, CloudCover) = await _riverDataService.ScrapeRiverDataTemperatureAsync();
-        (pressure, sunrise, sunset, UV) = await _riverDataService.ScrapeWaterlooWeatherData();
+        //(Temperature, Wind, CloudCover) = await _riverDataService.ScrapeRiverDataTemperatureAsync();
+        (Temperature, Wind, CloudCover, pressure, sunrise, sunset, UV) = await _riverDataService.ScrapeWaterlooWeatherData();
     }
 
     
