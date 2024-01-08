@@ -6,7 +6,7 @@ namespace KWFishingHQ.Pages;
 
 public class IndexModel : PageModel
 {
-    private readonly ILogger<IndexModel> _logger;
+    // private readonly ILogger<IndexModel> _logger;
     private readonly IRiverDataService _riverDataService;
     public string? Temperature { get; private set; }
     public string? Wind { get; private set; }
