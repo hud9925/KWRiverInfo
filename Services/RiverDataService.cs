@@ -51,13 +51,21 @@ namespace KWFishingHQ.Services
         // }
         public async Task<(string Temperature, string Wind, string CloudCover, string Pressure, string SunRise, string SunSet, string UVindex)> ScrapeWaterlooWeatherData()
         {
+            var apiKey = "7b7ccd5c-d6a6-41a8-9f8e-89b94f64cbce";
+    
+            // The Browserless.io WebSocket endpoint
+            var browserWSEndpoint = $"wss://chrome.browserless.io?token={apiKey}";
             // scraping logic for additional weather data from weatherwx.com for waterloo ontario
             try {
-                await new BrowserFetcher().DownloadAsync();
-                var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-                {
-                    Headless = true
-                });
+                var browser = await Puppeteer.ConnectAsync(new ConnectOptions
+                    {
+                        BrowserWSEndpoint = browserWSEndpoint
+                    });
+                // await new BrowserFetcher().DownloadAsync();
+                // var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+                // {
+                //     Headless = true
+                // });
 
                 var page = await browser.NewPageAsync();
                 await page.SetUserAgentAsync("danielhu");
