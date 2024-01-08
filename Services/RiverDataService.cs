@@ -12,43 +12,43 @@ namespace KWFishingHQ.Services
         }
         //public string ScrapeResult { get;  private set;}
 
-        public async Task<(string Temperature, string Wind, string CloudCover)> ScrapeRiverDataTemperatureAsync()
-        {
-            // scraping air temperature, wind speed and direction, cloud cover values from accuweather.com, for Waterloo
-            try {
-                await new BrowserFetcher().DownloadAsync();
-                var browser = await Puppeteer.LaunchAsync(new LaunchOptions
-                {
-                    Headless = true
-                });
+        // public async Task<(string Temperature, string Wind, string CloudCover)> ScrapeRiverDataTemperatureAsync()
+        // {
+        //     // scraping air temperature, wind speed and direction, cloud cover values from accuweather.com, for Waterloo
+        //     try {
+        //         await new BrowserFetcher().DownloadAsync();
+        //         var browser = await Puppeteer.LaunchAsync(new LaunchOptions
+        //         {
+        //             Headless = true
+        //         });
 
-                var page = await browser.NewPageAsync();
-                await page.SetUserAgentAsync("danielhu");
-                await page.GoToAsync("https://www.accuweather.com/en/ca/waterloo/n2j/hourly-weather-forecast/55073");
+        //         var page = await browser.NewPageAsync();
+        //         await page.SetUserAgentAsync("danielhu");
+        //         await page.GoToAsync("https://www.accuweather.com/en/ca/waterloo/n2j/hourly-weather-forecast/55073");
         
-                await page.WaitForSelectorAsync("div.temp");
-                var temperatureElement = await page.QuerySelectorAsync("div.temp");
-                var temperatureText = await temperatureElement.EvaluateFunctionAsync<string>("el => el.textContent");
+        //         await page.WaitForSelectorAsync("div.temp");
+        //         var temperatureElement = await page.QuerySelectorAsync("div.temp");
+        //         var temperatureText = await temperatureElement.EvaluateFunctionAsync<string>("el => el.textContent");
 
-                await page.WaitForSelectorAsync("div.panel.no-realfeel-phrase p:nth-of-type(1) span.value");
-                var windElement = await page.QuerySelectorAsync("div.panel.no-realfeel-phrase p:nth-of-type(1) span.value");
-                var windText = await windElement.EvaluateFunctionAsync<string>("el => el.textContent");
+        //         await page.WaitForSelectorAsync("div.panel.no-realfeel-phrase p:nth-of-type(1) span.value");
+        //         var windElement = await page.QuerySelectorAsync("div.panel.no-realfeel-phrase p:nth-of-type(1) span.value");
+        //         var windText = await windElement.EvaluateFunctionAsync<string>("el => el.textContent");
 
-                await page.WaitForSelectorAsync("body > div > div.two-column-page-content > div.page-column-1 > div.page-content.content-module > div.hourly-wrapper.content-module > div > div.accordion-item-content > div > div:nth-child(2) > div > p:nth-child(3) > span");
-                var cloudCover = await page.QuerySelectorAsync("body > div > div.two-column-page-content > div.page-column-1 > div.page-content.content-module > div.hourly-wrapper.content-module > div > div.accordion-item-content > div > div:nth-child(2) > div > p:nth-child(3) > span");
-                var cloudText = await cloudCover.EvaluateFunctionAsync<string>("el => el.textContent");
+        //         await page.WaitForSelectorAsync("body > div > div.two-column-page-content > div.page-column-1 > div.page-content.content-module > div.hourly-wrapper.content-module > div > div.accordion-item-content > div > div:nth-child(2) > div > p:nth-child(3) > span");
+        //         var cloudCover = await page.QuerySelectorAsync("body > div > div.two-column-page-content > div.page-column-1 > div.page-content.content-module > div.hourly-wrapper.content-module > div > div.accordion-item-content > div > div:nth-child(2) > div > p:nth-child(3) > span");
+        //         var cloudText = await cloudCover.EvaluateFunctionAsync<string>("el => el.textContent");
 
-                await browser.CloseAsync();
+        //         await browser.CloseAsync();
 
-                return (temperatureText, windText, cloudText);
-            }
-            catch(Exception ex)
-            {
-                Console.WriteLine($"Error occurred: {ex.Message}");
-                return ("Error", "e", "Error");
-            }
+        //         return (temperatureText, windText, cloudText);
+        //     }
+        //     catch(Exception ex)
+        //     {
+        //         Console.WriteLine($"Error occurred: {ex.Message}");
+        //         return ("Error", "e", "Error");
+        //     }
             
-        }
+        // }
         public async Task<(string Temperature, string Wind, string CloudCover, string Pressure, string SunRise, string SunSet, string UVindex)> ScrapeWaterlooWeatherData()
         {
             // scraping logic for additional weather data from weatherwx.com for waterloo ontario

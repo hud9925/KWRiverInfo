@@ -15,51 +15,67 @@
             <h1>KW Fishing HQ</h1>
             <p>Find out all the data to ensure your fishing trips will be successful in Waterloo!</p>
         </div>
-    <div class= "map-container">
-        <div id="map" style="height: 400px;"></div>
-    </div>
-
-    <div class= "current-conditions">
-        <h2> Current Conditions For the Conestogo River</h2>
-        @* Tables display current conditions for River *@
-        <table>
-            <tr>
-                <th>Current Air Temperature (°C)</th>
-                <th>Current Wind Direction and Speed (mph)</th>
-                <th>Current Barometric Pressure </th>
-                <th>Current Cloud Cover Percentage</th>
-                <th>UV Index </th>
-                <th>Sunrise Time</th>
-                <th>Sun Set</th>
-            </tr>
-            <tr>  
-                @* dummy values for barometric pressure and UV Index, will implement change between F and C for temperature on click *@
-                <td>@Model.Temperature </td>
-                <td> @Model.Wind </td>
-                <td> @Model.Pressure</td>
-                <td> @Model.CloudCover </td>
-                <td>@Model.UVindex </td>
-                <td>@Model.SunRise </td>
-                <td> @Model.SunSet </td>
-            </tr>
-        </table>
-        <p>
-            Sources: weather wx.com, or https://www.weatherwx.com/forecasts/ca/on/waterloo.html
-        </p>
-         <div class="fishing-success">
-            <h2>Overall Fishing Success for today:</h2>
-            <p>[Coming Soon]</p>
+    <div class = "row">
+        <div class="col-md-6">
+            <h2>
+                Interactive map of The Conestogo River, displaying different access points
+            </h2>
+            <div class= "map-container">
+                <div id="map" style="height: 300px;"></div>
+            </div>
+        </div>
+        <div class ="col-md-6">
+            <div class= "current-conditions">
+                
+                <h2> Current Conditions For the Conestogo River</h2>
+                <p id = "datetime"></p>
+                @* Tables display current conditions for River *@
+                    <table>
+                        <tr>
+                            <th>Current Air Temperature (°C)</th>
+                            <th>Current Wind Direction and Speed (mph)</th>
+                            <th>Current Barometric Pressure </th>
+                            <th>Current Cloud Cover Percentage</th>
+                            <th>UV Index </th>
+                            <th>Sunrise Time</th>
+                            <th>Sun Set</th>
+                        </tr>
+                        <tr>  
+                            
+                            <td>@Model.Temperature </td>
+                            <td> @Model.Wind </td>
+                            <td> @Model.Pressure</td>
+                            <td> @Model.CloudCover </td>
+                            <td>@Model.UVindex </td>
+                            <td>@Model.SunRise </td>
+                            <td> @Model.SunSet </td>
+                        </tr>
+                    </table>
+                    <p> Sources: weather wx.com, or https://www.weatherwx.com/forecasts/ca/on/waterloo.html</p>
+            </div>
         </div>
 
-        <div class="fishing-regulations">
-            <h2>Fishing Regulations and Season</h2>
-            <p>[Coming Soon]</p>
+    </div>
+    <div class = "row">
+        <div class="col-md-12">
+             <div class="fishing-success">
+                <h2>Overall Fishing Success for today:</h2>
+                    <p>
+                        [Coming Soon]
+                    </p>
+                    <p>
+                        Based on current climatic and past climatic conditions, helps predicts whether fishing will be successful </p>
+            </div>
+        <div class="col-md-12">
+            <div class="fishing-regulations">
+                <h2>Fishing Regulations and Season</h2>
+                <p>[Coming Soon]</p>
+            </div>
+        </div>
         </div>
     </div>
 </main>
-<footer>
-    Comments? Send me an email here: 
-</footer>
+
 
 @section Styles {
     <link rel="stylesheet" href="~/css/IndexStyleSheet.css" />
