@@ -1,10 +1,16 @@
-#A tool that can help any angler wishing to fish tributary waters of the Grand River Watershed in Southern Ontario.
+# KWRiverInfo
 
-##Current Build Features (as of 1/7/23) ##
-- Current air temperature, barometric pressure, sunrise and sunset times, cloud cover, and UV values
-- Map of the Conestogo River, with access points labelled
+A comprehensive tool designed for anglers targeting tributary waters of the Grand River Watershed in Southern Ontario. This application provides essential information and resources to maximize your fishing experience in the region.
 
-##Upcoming Features##
-- Links and neccessary fishing regulation information for different areas of the river
-- AI predictor of fishing success depending on current and historical climate data
-- additional tributaries, and eventually the rest of the Grand River in the KW region
+## Current Build Features (as of January 7, 2024)
+
+- **Weather Data**: Displays current air temperature, barometric pressure, sunrise and sunset times, cloud cover percentage, and UV index, of the region.
+- **Interactive Map**: Features a detailed map of the Conestogo River, highlighting key access points for anglers.
+
+## Upcoming Features
+
+- **Regulatory Information**: Direct links to fishing regulations and necessary information for different areas along the river.
+- **AI-Powered Fishing Success Predictor**: Utilizes current and historical climate data to predict the likelihood of fishing success.
+- **Expanded Coverage**: Inclusion of additional tributaries and a comprehensive overview of the Grand River within the Kitchener-Waterloo region.
+
+
