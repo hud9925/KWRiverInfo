@@ -1,6 +1,6 @@
 # KWRiverInfo
 
-A comprehensive tool designed for anglers targeting tributary waters of the Grand River Watershed in Southern Ontario. This application provides essential information and resources to maximize your fishing experience in the region. https://kwriverdata.azurewebsites.net/
+A comprehensive tool designed for anglers targeting tributary waters of the Grand River Watershed in Southern Ontario. This application provides essential information and resources to maximize your fishing experience in the region. 
 
 
 ## Current Build Features (as of January 8, 2024)
