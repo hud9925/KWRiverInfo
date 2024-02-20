@@ -16,7 +16,7 @@ function updateDateTime(){
 }
 
 function initMap(){
-    var connestogoMap = L.map('map').setView([43.572270, -80.580270], 11);
+    var connestogoMap = L.map('map').setView([43.62270, -80.680270], 10.4);
     // Add a tile layer to add to our map, in this case using OpenStreetMap's tiles:
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 19,

@@ -9,85 +9,132 @@
     ViewData["Title"] = "Home page";
 
 }
-<main role = "main">
-    <div class="container">
-        <div class="header-space">
+<header>
+    <div class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+        <div class="continer-fluid">
+             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#mapSection">Map of the River</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#currentConditionsSection">Current Conditions</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#fishingSuccessSection">Fishing Success Predictor</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+
+<main role="main" class="pt-5">
+    <div class="container mt-5">
+        @* header  *@
+        @* <div class="header-space text-center">
             <h1>KW Fishing HQ</h1>
             <p>Find out all the data to ensure your fishing trips will be successful in Waterloo!</p>
-        </div>
-    <div class = "row">
-        <div class="col-md-6">
-            <h2>
-                Interactive map of The Conestogo River, displaying different access points
-            </h2>
-            <div class= "map-container">
-                <div id="map" style="height: 300px;"></div>
-            </div>
-        </div>
-        <div class ="col-md-6">
-            <div class= "current-conditions">
-                
-                <h2> Current Conditions For the Conestogo River</h2>
-                <p id = "datetime"></p>
-                @* Tables display current conditions for River *@
-                    <table>
-                        <tr>
-                            <th>Current Air Temperature (°C)</th>
-                            <th>Current Wind Direction and Speed (mph)</th>
-                            <th>Current Barometric Pressure </th>
-                            <th>Current Cloud Cover Percentage</th>
-                            <th>UV Index </th>
-                            <th>Sunrise Time</th>
-                            <th>Sun Set</th>
-                        </tr>
-                        <tr>  
-                            
-                            <td>@Model.Temperature </td>
-                            <td> @Model.Wind </td>
-                            <td> @Model.Pressure</td>
-                            <td> @Model.CloudCover </td>
-                            <td>@Model.UVindex </td>
-                            <td>@Model.SunRise </td>
-                            <td> @Model.SunSet </td>
-                        </tr>
-                    </table>
-                    <p> Sources: weather wx.com, or https://www.weatherwx.com/forecasts/ca/on/waterloo.html</p>
-            </div>
-        </div>
+        </div> *@
 
-    </div>
-    <div class = "row">
-        <div class="col-md-12">
-             <div class="fishing-success">
-                <h2>Overall Fishing Success for today:</h2>
-                    <p>
-                        [Coming Soon]
-                    </p>
-                    <p>
-                        Based on current climatic and past climatic conditions, helps predicts whether fishing will be successful </p>
+
+        <div class="row gx-4 gx-lg-5 align-items-center my-5">
+            <div class="col-lg-12">
+                <div id="map" style="height: 400px;"></div>
+                <h2 class="text-center my-4">Interactive map of The Conestogo River, displaying different access points</h2>
             </div>
-        <div class="col-md-12">
-            <div class="fishing-regulations">
-                <h2>Fishing Regulations and Season</h2>
-                <p>[Coming Soon]</p>
+    </div>
+        @* Current conditions  *@
+        <div class="row">
+            <div class= "col-lg-12 text-center my-4">
+                <h4>Current Conditions For the Conestogo River</h4>
+                <p id="datetime"></p>
+                    <table class="table mx-auto" style="width: auto;">
+                        <thead>
+                            <tr>
+                                <th>Current Air Temperature (°C)</th>
+                                <th>Current Wind Direction and Speed (mph)</th>
+                                <th>Current Barometric Pressure</th>
+                                <th>Current Cloud Cover Percentage</th>
+                                <th>UV Index</th>
+                                <th>Sunrise Time</th>
+                                <th>Sun Set</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>@Model.Temperature</td>
+                                <td>@Model.Wind</td>
+                                <td>@Model.Pressure</td>
+                                <td>@Model.CloudCover</td>
+                                <td>@Model.UVindex</td>
+                                <td>@Model.SunRise</td>
+                                <td>@Model.SunSet</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p>Sources: weather wx.com, or https://www.weatherwx.com/forecasts/ca/on/waterloo.html</p>
             </div>
         </div>
+        @* Cards for additional information *@
+        <div class="row text-center mt-4">
+            <div class="col-md-4 mb-5">
+                <div id="fishingSuccessSection">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Fishing Success Forecaster</h2>
+                        <p class="card-text">[Coming soon]</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Fishing Regulations and Limits</h2>
+                        <p class="card-text">[Coming Soon]</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-5">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <h2 class="card-title">Overall Fishing Success For Today</h2>
+                        <p class="card-text">[Coming Soon]</p>
+                    </div>
+                    <div class="card-footer"><a class="btn btn-primary btn-sm" href="#!">More Info</a></div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
 </main>
 
-
 @section Styles {
-    <link rel="stylesheet" href="~/css/IndexStyleSheet.css" />
+    @* <link rel="stylesheet" href="~/css/IndexStyleSheet.css" /> *@
+    <link rel="stylesheet" href="~/css/styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
      crossorigin=""/>
 
 }
 
-<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+
+@* leaflet scripts *@
+@section scripts{
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
      crossorigin=""></script>
-<script src="~/js/ConestogoRiverMap.js"></script> 
+    <script src="~/js/ConestogoRiverMap.js"></script> 
+
+    @* <script src="~/js/scripts.js"/></script> *@
+}
+
 
 @* <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBGxgPdeODaIh7XqDZYJXOOCTUB4Hnowkg&callback=initMap" async defer></script> *@

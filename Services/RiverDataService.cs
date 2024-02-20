@@ -38,6 +38,21 @@ namespace KWFishingHQ.Services
                 // });
 
                 var page = await browser.NewPageAsync();
+                // disable Images, CSS and JavaScript from Scrapped website 
+                await page.SetRequestInterceptionAsync(true);
+                page.Request += (sender, e) => {
+                    if (e.Request.ResourceType == ResourceType.Image || 
+                        e.Request.ResourceType == ResourceType.StyleSheet || 
+                        e.Request.ResourceType == ResourceType.Script) {
+                        e.Request.AbortAsync();
+                    } else {
+                        e.Request.ContinueAsync();
+                    }
+                };
+
+                await page.SetUserAgentAsync("danielhu");
+                await page.GoToAsync("https://www.weatherwx.com/forecasts/ca/on/waterloo.html");
+
                 await page.SetUserAgentAsync("danielhu");
                 await page.GoToAsync("https://www.weatherwx.com/forecasts/ca/on/waterloo.html");
 

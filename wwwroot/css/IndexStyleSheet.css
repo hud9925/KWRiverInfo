@@ -14,6 +14,12 @@ h2 {
     margin-top:20px;
 }
 
+.map-subtitle h2 {
+    font-size: 1.25rem; /* Adjust the font size as needed */
+    margin-bottom: 1rem; /* Add more space below the subtitle */
+}
+
+
 table{
     width:  100%;
     border-collapse: collapse;

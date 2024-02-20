@@ -6,8 +6,6 @@ using Microsoft.AspNetCore.Mvc.Routing;
 
 var builder = WebApplication.CreateBuilder(args);
 
-
-
 // Azure key vault configuration
 string keyVaultUrl = builder.Configuration["AzureKeyVault:Url"];
 var secretClient = new SecretClient(new Uri(keyVaultUrl), new DefaultAzureCredential());
